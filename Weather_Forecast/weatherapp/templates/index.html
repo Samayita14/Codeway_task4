@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+
+    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap'>
+    <link rel="stylesheet" href="/weatherapp/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+<body>
+    <div style="margin: auto;width: fit-content;" class="container"> 
+        <!-- </div> -->
+        <div class="display-box">
+            <div class="input-box">
+                <input type="text" id="user" class="input-field" value="{{temperature}}" autocomplete="off">
+
+                <label for="user" class="label" style="color: black;">Temperature
+                </label>
+            </div>
+            <div class="input-box">
+                <input type="text" id="user" class="input-field" value="{{humidity}}" autocomplete="off">
+
+                <label for="user" class="label" style="color: black;">Humidity
+                </label>
+            </div>
+            <div class="input-box">
+                <input type="text" id="user" class="input-field" value="{{weatherdesc}}" autocomplete="off">
+                <img src="{{weatherimage}}" alt="" height="50px" width="50px" style="margin: auto;">
+
+                <label for="user" class="label" style="color: black;">Description
+                </label>
+            </div>
+            <div class="input-box">
+                <input type="text" id="user" class="input-field" value="{{date}}" autocomplete="off">
+
+                <label for="user" class="label" style="color: black;">Date
+                </label>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="login-box">
+                <div class="login-header">
+                    
+                    <span>ForeCasting</span>
+            </div>
+            <form action="{% url 'forecast' %}" method="post">
+                {% csrf_token %}
+                <div class="input-box">
+                    <input type="text" id="number" class="input-field number1" autocomplete="off" name="city" value="{{city}}" required>
+
+                    <label for="user" class="label" style="color: black;">Enter City Name
+                    </label>
+                   
+                </div>
+                
+
+                
+
+                <div class="input-box">
+                    <input type="submit" class="input-submit" value="Submit">
+                </div>
+                <div class="input-box">
+                    <a href="{% url 'resetbtn' %}" style="color: black;"><button class="input-submit resetbtn">Reset</a>
+                </div>
+                
+            </form>
+        </div>
+
+    </div>
+
+    
+
+</body>
+</html>
